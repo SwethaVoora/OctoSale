@@ -104,16 +104,9 @@ export interface Media {
  */
 export interface Order {
   id: string;
-  firstname?: string | null;
+  firstname: string;
   lastname: string;
   email: string;
-  cartitems: {
-    id: string | null;
-    name: string;
-    description?: string | null;
-    OctosalePrice: number;
-    category: 'furniture' | 'electronics' | 'free-items';
-  }[];
   updatedAt: string;
   createdAt: string;
 }

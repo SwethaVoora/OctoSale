@@ -25,7 +25,8 @@ export const orderRouter = router({
   createPayloadOrder: publicProcedure
     .input(OrderCredentialsValidator)
     .mutation(async ({ input }) => {
-      const { firstname, lastname, email, cartitems } = input;
+      const { firstname, lastname, email } = input;
+      // const { firstname, lastname, email, cartitems } = input;
       const payload = await getPayloadClient();
 
       // resolve: async ({ input }) => {
@@ -37,7 +38,7 @@ export const orderRouter = router({
             firstname,
             lastname,
             email,
-            cartitems,
+            // cartitems,
           },
         });
 
