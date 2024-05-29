@@ -6,6 +6,7 @@ import { publicProcedure, router } from "./trpc";
 import { QueryValidator } from "../lib/validators/query-validator";
 import { getPayloadClient } from "../get-payload";
 import { orderRouter } from "./cart";
+import { emailRouter } from "./email-router";
 
 // src/server/routers/index.ts
 // import { createRouter } from '../createRouter';
@@ -19,6 +20,7 @@ import { orderRouter } from "./cart";
 export const appRouter = router({
   auth: authRouter,
   cart: orderRouter,
+  email: emailRouter,
   getInfiniteProducts: publicProcedure
     .input(
       z.object({

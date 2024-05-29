@@ -20,31 +20,45 @@ export const Orders: CollectionConfig = {
       type: "text",
       required: true,
     },
-    { name: "email", label: "Email-Address", type: "text", required: true },
-    // {
-    //   name: "cartitems",
-    //   type: "array",
-    //   label: "Cart Items",
-    //   minRows: 1,
-    //   maxRows: 30,
-    //   required: true,
-    //   labels: {
-    //     singular: "Cart Item",
-    //     plural: "Cart Items",
+    {
+      name: "email",
+      label: "Email-Address",
+      unique: true,
+      type: "text",
+      required: true,
+    },
+    {
+      name: "phone",
+      label: "US Phone Number",
+      unique: true,
+      type: "text",
+      required: true,
+    },
+    {
+      name: "cartitems",
+      type: "text",
+      label: "Cart Items",
+      // minRows: 1,
+      // maxRows: 30,
+      required: true,
+      // labels: {
+      //   singular: "Cart Item",
+      //   plural: "Cart Items",
+      // },
+    },
+    // fields: [
+    //   // {
+    //   //   name: "id",
+    //   //   label: "Product Id",
+    //   //   type: "text",
+    //   //   required: true,
+    //   // },
+    //   {
+    //     name: "name",
+    //     label: "Name",
+    //     type: "text",
+    //     required: true,
     //   },
-    //   fields: [
-    //     {
-    //       name: "id",
-    //       label: "Product Id",
-    //       type: "text",
-    //       required: true,
-    //     },
-    // {
-    //   name: "name",
-    //   label: "Name",
-    //   type: "text",
-    //   required: true,
-    // },
     // { name: "description", type: "textarea", label: "product details" },
     // {
     //   name: "OctosalePrice",

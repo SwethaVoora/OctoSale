@@ -16,7 +16,7 @@ const Navbar = () => {
       <header className="relative bg-white">
         <MaxWidthWrapper>
           <div className="border-b border-gray-200">
-            <div className="flex h-16 items-center">
+            <div className="flex h-16 items-center justify-between">
               {/* TODO: MOBILE NAV */}
 
               <div className="ml-4 flex lg:ml-0">
@@ -25,7 +25,7 @@ const Navbar = () => {
                 </Link>
               </div>
 
-              <div className="hidden z-50 lg:ml-8 lg:block lg:self-stretch">
+              {/* <div className="hidden z-50 lg:ml-8 lg:block lg:self-stretch">
                 <NavItems />
               </div>
 
@@ -66,13 +66,13 @@ const Navbar = () => {
                         aria-hidden="true"
                       />
                     </div>
-                  )}
+                  )} */}
 
-                  <div className="ml-4 flow-root lg:ml-6">
-                    <Cart />
-                  </div>
-                </div>
+              <div className="ml-4 flow-root lg:ml-6">
+                <Cart />
               </div>
+              {/* </div>
+              </div> */}
             </div>
           </div>
         </MaxWidthWrapper>

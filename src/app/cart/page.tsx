@@ -12,10 +12,11 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import CartItem from "@/components/CartItem";
 import { trpc } from "@/trpc/client";
-import { string } from "zod";
+import { useRouter } from "next/navigation";
 
 const CartForm = () => {
   const { items } = useCart();
+  const router = useRouter(); // Initialize the router
   // console.log("your items are: ", items);
   const {
     register,
@@ -29,7 +30,7 @@ const CartForm = () => {
   // console.log("Cart items in the form: ", localcartitems);
   // const { items } = useCart();
   // creating a list of productIds
-  const localcartitems = items.map(({ product }) => product.name);
+  // const localcartitems = items.map(({ product }) => product.name);
 
   const { mutate, isLoading, isError, isSuccess } =
     trpc.cart.createPayloadOrder.useMutation({
@@ -40,14 +41,33 @@ const CartForm = () => {
         console.error("Error creating order", error);
       },
     });
+
+  const sendEmailMutation = trpc.email.sendEmail.useMutation();
+
   // console.log("debug2");
-  const onSubmit = ({
+  const onSubmit = async ({
     firstname,
     lastname,
     email,
+    phone,
+    cartitems,
   }: // cartitems,
   TOrderCredentialsValidator) => {
-    console.log("submitting data to the db", firstname, lastname, email);
+    console.log(
+      "FORM DATA : ",
+      "\n fn : ",
+      firstname,
+      "\n ln : ",
+      lastname,
+      "\n email: ",
+      email,
+      "\n phone: ",
+      phone,
+      "\n items: ",
+      cartitems
+    );
+    // const { items } = useCart();
+    // cartitems = items.map(({ product }) => product.name);
     // const orderData = {
     //   ...data,
     //   cartitems: items.map(({ product }) => ({
@@ -60,7 +80,15 @@ const CartForm = () => {
     // };
     // cartitems = localcartitems;
     // console.log("debug3");
-    mutate({ firstname, lastname, email });
+    mutate({ firstname, lastname, email, cartitems, phone });
+    await sendEmailMutation.mutateAsync({
+      firstname,
+      lastname,
+      email,
+      phone,
+      cartitems,
+    });
+    router.push("/thankyou");
   };
   // console.log("debug4");
 
@@ -70,6 +98,19 @@ const CartForm = () => {
         OctoSale
       </div>
 
+      <div className="flex flex-col mx-auto w-2/3 md:w-1/3">
+        <Label className="text-orange-600 font-semibold text-xl">
+          Cart Items:
+        </Label>
+        <ul>
+          {items.map(({ product }) => (
+            <li key={product.id}>
+              <CartItem product={product} />
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <div className="pt-10 font-medium w-2/3 text-base mx-auto max-w-prose">
         Please submit the below details. We will reach out to you regarding the
         further process.
@@ -77,6 +118,9 @@ const CartForm = () => {
       <form
         onSubmit={handleSubmit(onSubmit)} // Correctly call handleSubmit here
         className="grid gap-6 pt-10"
+        // action={async (formData) => {
+        //   await sendEmail(formData);
+        // }}
       >
         <div className="w-2/3 md:w-1/3 grid mx-auto flex-col">
           <div className="grid gap-1 py-2">
@@ -103,15 +147,24 @@ const CartForm = () => {
               placeholder="you@example.com"
             />
           </div>
-          <Label htmlFor="cartitems">Cart Items:</Label>
-          <ul>
-            {localcartitems.map((item) => (
-              <li key={item}>
-                <div>{item}</div>
-                {/* <CartItem product={product} /> */}
-              </li>
-            ))}
-          </ul>
+          <div className="grid gap-1 py-2">
+            <Label htmlFor="phone">US Phone Number</Label>
+            <Input
+              {...register("phone")}
+              className={errors.phone ? "focus-visible:ring-red-500" : ""}
+              placeholder="0123456789"
+            />
+          </div>
+          <div className="grid gap-1 py-2">
+            <Label htmlFor="cartitems">
+              Comma seperated names of Cart Items
+            </Label>
+            <Input
+              {...register("cartitems")}
+              className={errors.cartitems ? "focus-visible:ring-red-500" : ""}
+              placeholder="Sofa/Bed, Window curtains"
+            />
+          </div>
         </div>
         <Button
           type="submit"
@@ -128,15 +181,4 @@ const CartForm = () => {
 };
 
 export default CartForm;
-//       {/* <div className="flex flex-col mx-auto w-2/3 md:w-1/3">
-//         <Label className="text-orange-600 font-semibold text-xl">
-//           Cart Items:
-//         </Label>
-//         <ul>
-//           {items.map(({ product }) => (
-//             <li key={product.id}>
-//               <CartItem product={product} />
-//             </li>
-//           ))}
-//         </ul>
-//       </div> */}
+//

@@ -1,8 +1,9 @@
-// import { z } from "zod";
+import { z } from "zod";
 import { publicProcedure, router } from "./trpc";
 import { getPayloadClient } from "../get-payload";
 import { OrderCredentialsValidator } from "../lib/validators/orders-validators";
 import { TRPCError } from "@trpc/server";
+import { Resend } from "resend";
 // import { resend } from "@/lib/resend";
 
 // const createOrderValidator = z.object({
@@ -21,12 +22,14 @@ import { TRPCError } from "@trpc/server";
 //   ),
 // });
 
+// const resend = new Resend(process.env.RESEND_API_KEY);
+
 export const orderRouter = router({
   createPayloadOrder: publicProcedure
     .input(OrderCredentialsValidator)
     .mutation(async ({ input }) => {
-      const { firstname, lastname, email } = input;
-      // const { firstname, lastname, email, cartitems } = input;
+      // const { firstname, lastname, email } = input;
+      const { firstname, lastname, email, cartitems, phone } = input;
       const payload = await getPayloadClient();
 
       // resolve: async ({ input }) => {
@@ -38,9 +41,17 @@ export const orderRouter = router({
             firstname,
             lastname,
             email,
-            // cartitems,
+            phone,
+            cartitems,
           },
         });
+
+        // await resend.emails.send({
+        //   from: "onboarding@resend.dev",
+        //   to: "swetha.voora01@gmail.com",
+        //   subject: "Octosale Checkout Form Submission",
+        //   text: `First Name: ${firstname}\nLast Name: ${lastname}\nEmail: ${email}\nCart Items: ${cartitems}`,
+        // });
 
         // // Save the order to MongoDB
         // const order = new Order({ firstName, lastName, email, cartItems });
@@ -61,7 +72,7 @@ export const orderRouter = router({
       } catch (error) {
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
-          message: "Failed to create order",
+          message: "Failed to create order : " + error,
           cause: error,
         });
       }

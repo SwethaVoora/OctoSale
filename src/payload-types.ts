@@ -107,6 +107,8 @@ export interface Order {
   firstname: string;
   lastname: string;
   email: string;
+  phone: string;
+  cartitems: string;
   updatedAt: string;
   createdAt: string;
 }
