@@ -2,7 +2,7 @@ import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import { BaggageClaim, CheckCircle, DollarSign } from "lucide-react";
+import { BaggageClaim, DollarSign, MapPin } from "lucide-react";
 import ProductReel from "@/components/ProductReel";
 
 const perks = [
@@ -13,10 +13,9 @@ const perks = [
       "Get your items at any time of the day(10AM - 9PM), when you are available.",
   },
   {
-    name: "Guaranteed Quality",
-    Icon: CheckCircle,
-    description:
-      "Every product on our website is verified by us, to ensure highest quality standard.",
+    name: "Location",
+    Icon: MapPin,
+    description: "5 minutes walk from Indian street near JSQ, Jersey City, NJ.",
   },
   {
     name: "Pay on the Spot/Online",
