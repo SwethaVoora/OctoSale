@@ -30,13 +30,13 @@ export const emailRouter = router({
     .input(sendEmailSchema)
     .mutation(async ({ input }) => {
       try {
-        const { firstname, lastname, email, cartitems } = input;
+        const { firstname, lastname, email, cartitems, phone } = input;
         const response = await resend.emails.send({
           from: "onboarding@resend.dev",
           to: "swetha.voora01@gmail.com",
           reply_to: email,
           subject: "Octosale Checkout Form Submission",
-          text: `First Name: ${firstname}\nLast Name: ${lastname}\nEmail: ${email}\nCart Items: ${cartitems}`,
+          text: `Good news! ${firstname} ${lastname} is interested in the buying the below products from OctoSale:\nProducts: ${cartitems}. \n\n To further discuss the process, you may use their contact information\nPhone Number: ${phone}\nEmail: ${email}\nCart Items: ${cartitems}`,
         });
 
         if (response.error) {
