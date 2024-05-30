@@ -3,15 +3,17 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
         hostname: "localhost",
+        pathname: "**",
+        port: "3000",
+        protocol: "http",
       },
       {
-        protocol: "https",
         hostname: "octosale.vercel.app",
+        protocol: "https",
       },
     ],
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;
