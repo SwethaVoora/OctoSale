@@ -13,7 +13,10 @@ interface ProductListingProps {
   index: number;
 }
 
-const ProductListing = ({ product, index }: ProductListingProps) => {
+const ProductListing = ({
+  product,
+  index,
+}: ProductListingProps): JSX.Element | null => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   useEffect(() => {
@@ -34,31 +37,31 @@ const ProductListing = ({ product, index }: ProductListingProps) => {
     .map(({ image }) => (typeof image === "string" ? image : image.url))
     .filter(Boolean) as string[];
 
-  if (isVisible && product) {
-    return (
-      <Link
-        className={cn("invisible h-full w-full cursor-pointer group/main", {
-          "visible animate-in fade-in-5": isVisible,
-        })}
-        href={`/product/${product.id}`}
-      >
-        <div className="flex flex-col w-full">
-          <ImageSlider urls={validUrls} />
+  console.log(validUrls);
 
-          <h3 className="mt-4 font-medium text-sm text-gray-700">
-            {product.name}
-          </h3>
-          <p className="mt-1 text-sm text-gray-500">{label}</p>
-          <p className="mt-1 font-medium text-sm text-gray-900">
-            <span className="line-through text-red-500">
-              {formatPrice(product.OriginalPrice)}
-            </span>{" "}
-            {formatPrice(product.OctosalePrice)}
-          </p>
-        </div>
-      </Link>
-    );
-  }
+  return (
+    <Link
+      className={cn("invisible h-full w-full cursor-pointer group/main", {
+        "visible animate-in fade-in-5": isVisible,
+      })}
+      href={`/product/${product.id}`}
+    >
+      <div className="flex flex-col w-full">
+        <ImageSlider urls={validUrls} />
+
+        <h3 className="mt-4 font-medium text-sm text-gray-700">
+          {product.name}
+        </h3>
+        <p className="mt-1 text-sm text-gray-500">{label}</p>
+        <p className="mt-1 font-medium text-sm text-gray-900">
+          <span className="line-through text-red-500">
+            {formatPrice(product.OriginalPrice)}
+          </span>{" "}
+          {formatPrice(product.OctosalePrice)}
+        </p>
+      </div>
+    </Link>
+  );
 };
 
 const ProductPlaceholder = (): JSX.Element => {

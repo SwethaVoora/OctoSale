@@ -40,7 +40,7 @@ const start = async () => {
   app.use(
     "/admin",
     basicAuth({
-      users: { admin: "password" }, // Replace with your credentials
+      users: { "swetha.voora01@gmail.com": "password" }, // Replace with your credentials
       challenge: true,
     })
   );

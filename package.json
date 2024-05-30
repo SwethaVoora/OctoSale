@@ -6,13 +6,17 @@
     "dev": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts nodemon",
     "generate:types": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:types",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts node src/server.js",
+    "start:trpc": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts node src/trpc/index.js",
+    "start:payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload start"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.583.0",
+    "@aws-sdk/lib-storage": "^3.583.0",
     "@hookform/resolvers": "^3.4.2",
     "@payloadcms/bundler-webpack": "^1.0.6",
     "@payloadcms/db-mongodb": "^1.5.1",
+    "@payloadcms/plugin-cloud-storage": "^1.1.2",
     "@payloadcms/richtext-slate": "^1.5.2",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-label": "^2.0.2",
@@ -25,6 +29,7 @@
     "@trpc/next": "^10.45.2",
     "@trpc/react-query": "^10.45.2",
     "@trpc/server": "^10.45.2",
+    "aws-sdk": "^2.1630.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cross-env": "^7.0.3",

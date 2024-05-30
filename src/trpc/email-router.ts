@@ -1,9 +1,9 @@
-import dotenv from "dotenv";
-import path from "path";
+// import dotenv from "dotenv";
+// import path from "path";
 
-dotenv.config({
-  path: path.resolve(__dirname, "../../.env"),
-});
+// dotenv.config({
+//   path: path.resolve(__dirname, "../../.env"),
+// });
 
 import { TRPCError } from "@trpc/server";
 import { publicProcedure, router } from "./trpc";
