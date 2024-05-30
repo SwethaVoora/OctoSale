@@ -61,7 +61,7 @@ const ProductListing = ({ product, index }: ProductListingProps) => {
   }
 };
 
-const ProductPlaceholder = () => {
+const ProductPlaceholder = (): JSX.Element => {
   return (
     <div className="flex flex-col w-full">
       <div className="relative bg-zinc-100 aspect-square w-full overflow-hidden rounded-xl">
