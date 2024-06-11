@@ -13,8 +13,14 @@ dotenv.config({
   path: path.resolve(__dirname, "../.env"),
 });
 
+// Determine the server URL based on the environment
+const serverURL =
+  process.env.NODE_ENV === "production"
+    ? `https://${process.env.VERCEL_URL}`
+    : process.env.NEXT_PUBLIC_SERVER_URL || `http://localhost:3000`;
+
 export default buildConfig({
-  serverURL: process.env.NEXT_PUBLIC_SERVER_URL || "",
+  serverURL: serverURL,
   collections: [Users, Products, Media, Orders], //Collections for ORders, Users, PRoducts..
   routes: {
     admin: "/sell",

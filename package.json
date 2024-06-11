@@ -8,8 +8,10 @@
     "build:payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload build",
     "build:server": "tsc --project tsconfig.server.json",
     "build:next": "cross-env PAYLOAD_CONFIG_PATH=dist/payload.config.js NEXT_BUILD=true node dist/server.js",
-    "build": "tsc && next build",
+    "build": "tsc -p tsconfig.server.json && next build",
     "start": "next start",
+    "build:trpc": "tsc -p tsconfig.server.json",
+    "start:trpc": "node dist/trpc/index.js",
     "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png,js,ts}\" dist/",
     "lint": "next lint"
   },
