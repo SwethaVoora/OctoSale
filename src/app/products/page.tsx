@@ -1,6 +1,6 @@
-import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import ProductReel from "@/components/ProductReel";
-import { PRODUCT_CATEGORIES } from "@/config";
+import MaxWidthWrapper from "../../components/MaxWidthWrapper";
+import ProductReel from "../../components/ProductReel";
+import { PRODUCT_CATEGORIES } from "../../config";
 
 type Param = string | string[] | undefined;
 

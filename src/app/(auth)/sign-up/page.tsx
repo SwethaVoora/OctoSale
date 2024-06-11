@@ -1,9 +1,9 @@
 "use client";
-import { Icons } from "@/components/Icons";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { cn } from "@/lib/utils";
+import { Icons } from "../../../components/Icons";
+import { Button, buttonVariants } from "../../../components/ui/button";
+import { Input } from "../../../components/ui/input";
+import { Label } from "../../../components/ui/label";
+import { cn } from "../../../lib/utils";
 import { ArrowRight, CircleDotDashed } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -12,8 +12,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   AuthCredentialsValidator,
   TAuthCredentialsValidator,
-} from "@/lib/validators/account-credentials-validators";
-import { trpc } from "@/trpc/client";
+} from "../../../lib/validators/account-credentials-validators";
+import { trpc } from "../../../trpc/client";
 
 const Page = () => {
   const {

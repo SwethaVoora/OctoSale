@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 import type SwiperType from "swiper";
 import { useEffect, useState } from "react";
 import { Pagination } from "swiper/modules";
-import { cn } from "@/lib/utils";
+import { cn } from "../lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface ImageSliderProps {

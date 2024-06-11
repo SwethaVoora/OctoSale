@@ -5,13 +5,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   TOrderCredentialsValidator,
   OrderCredentialsValidator,
-} from "@/lib/validators/orders-validators";
-import { useCart } from "@/hooks/use-cart";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import CartItem from "@/components/CartItem";
-import { trpc } from "@/trpc/client";
+} from "../../lib/validators/orders-validators";
+import { useCart } from "../../hooks/use-cart";
+import { Button } from "../../components/ui/button";
+import { Label } from "../../components/ui/label";
+import { Input } from "../../components/ui/input";
+import CartItem from "../../components/CartItem";
+import { trpc } from "../../trpc/client";
 import { useRouter } from "next/navigation";
 
 const CartForm = () => {

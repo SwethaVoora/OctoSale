@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "./ui/button";
-import { PRODUCT_CATEGORIES } from "@/config";
-import { cn } from "@/lib/utils";
+import { PRODUCT_CATEGORIES } from "../config";
+import { cn } from "../lib/utils";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";

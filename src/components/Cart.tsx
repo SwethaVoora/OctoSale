@@ -10,11 +10,11 @@ import {
 } from "./ui/sheet";
 import { ShoppingCart } from "lucide-react";
 import { Separator } from "./ui/separator";
-import { formatPrice } from "@/lib/utils";
+import { formatPrice } from "../lib/utils";
 import { buttonVariants } from "./ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import { useCart } from "@/hooks/use-cart";
+import { useCart } from "../hooks/use-cart";
 import { ScrollArea } from "./ui/scroll-area";
 import CartItem from "./CartItem";
 

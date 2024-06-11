@@ -1,9 +1,9 @@
-import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import { Button, buttonVariants } from "@/components/ui/button";
+import MaxWidthWrapper from "../components/MaxWidthWrapper";
+import { Button, buttonVariants } from "../components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { BaggageClaim, DollarSign, MapPin } from "lucide-react";
-import ProductReel from "@/components/ProductReel";
+import ProductReel from "../components/ProductReel";
 
 const perks = [
   {
