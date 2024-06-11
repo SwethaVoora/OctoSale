@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "src/trpc/**/*.ts",
+      "src": "dist/trpc/**/*.js",
       "use": "@vercel/node"
     },
     {
@@ -13,7 +13,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "src/trpc/$1"
+      "dest": "dist/trpc/$1"
     },
     {
       "src": "/(.*)",
