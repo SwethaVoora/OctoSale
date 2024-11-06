@@ -14,6 +14,10 @@ const nextConfig = {
       },
     ],
   },
+  env: {
+    MONGODB_URI: process.env.MONGODB_URI,
+    PAYLOAD_SECRET: process.env.PAYLOAD_SECRET,
+  },
 };
 
 export default nextConfig;
