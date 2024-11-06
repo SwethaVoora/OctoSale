@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "src/trpc/**/*.ts",
+      "src": "src/api/trpc/**/*.ts",
       "use": "@vercel/node"
     },
     {
